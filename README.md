@@ -17,26 +17,57 @@ One Good Icon is an agent skill for the complete app-icon cycle: divergent explo
 
 ## Install
 
-Run these commands from the repository root.
-
-For development, link the checkout so changes are available immediately:
+Install from GitHub with the [Skills CLI](https://github.com/vercel-labs/skills):
 
 ```bash
-mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
-ln -s "$(pwd)" "${CODEX_HOME:-$HOME/.codex}/skills/one-good-icon"
+npx skills add florianrumigny/one-good-icon-skill
 ```
 
-For a standalone copy instead:
+The CLI detects supported agents and lets you choose where to install the skill. To install it globally for Codex without prompts:
 
 ```bash
-ONE_GOOD_ICON_DIR="${CODEX_HOME:-$HOME/.codex}/skills/one-good-icon"
-mkdir -p "$ONE_GOOD_ICON_DIR"
-cp -R SKILL.md agents assets references "$ONE_GOOD_ICON_DIR/"
+npx skills add florianrumigny/one-good-icon-skill \
+  --skill one-good-icon \
+  --global \
+  --agent codex \
+  --yes
 ```
 
-If the destination already exists, update or remove that installation before running the command again. Start a new Codex task, then verify the skill with:
+Verify the installation with:
 
-> Use `$one-good-icon` to explore an app icon and stop after the exploration board.
+```bash
+npx skills ls --global --agent codex
+```
+
+Then start a new Codex task and invoke `$one-good-icon`.
+
+## Use cases
+
+Give the skill the real product material you have and tell it how far to go. It pauses for human selection between Explore, Refine, and Ship.
+
+**Start from an idea**
+
+> Use `$one-good-icon` to explore an app icon for a calm shared grocery-list app. Create 4–6 genuinely different directions and stop after the exploration board.
+
+**Derive an icon from an existing product**
+
+> Use `$one-good-icon` with this product brief, UI screenshots, brand palette, and visual references. Extract the visual principles worth preserving without copying proprietary elements, then explore icon directions.
+
+**Improve an existing icon**
+
+> Use `$one-good-icon` to critique this current icon at 1024, 256, 128, 64, and 32 px. Diagnose concrete recognition, silhouette, contrast, distinctiveness, and platform-resilience problems, then propose targeted variations.
+
+**Refine selected candidates**
+
+> Use `$one-good-icon` to refine candidates B and D. Test them on light, dark, and busy backgrounds, in a homescreen grid, and across relevant iOS and Android masks. Stop for my approval before Ship.
+
+**Ship platform assets**
+
+> Use `$one-good-icon` to ship this approved icon for my Expo project. Preserve the selected master, choose raster, vector, or useful layers based on the artwork, generate the iOS and Android assets, update the project configuration, and verify the final files and renders.
+
+**Use it with MAYA**
+
+> Let `$maya` own the broader art direction and `$one-good-icon` own the specialist app-icon workflow. Explore from the attached product material and stop when a human choice is required.
 
 ## Companion: MAYA
 
@@ -65,10 +96,6 @@ This MVP defines and validates the agent workflow. It does not bundle a generato
 
 The identity turns “icon” into a small visual joke: a single eye-con emerges from the visible remains of several iterations. The full lockup belongs in documentation; the skill avatar keeps only the eye and iteration contours.
 
-## Try it
-
-Install or link the folder as a Codex skill, then invoke it with real material:
-
-> Use `$one-good-icon` to explore an app icon for this product. Here are the product brief, three screenshots, the brand palette, and two visual references. Stop after the exploration board.
+## Try the fixture
 
 For a low-risk dry run, use `tests/fixtures/pocket-tide.md` and ask the skill to complete Explore only.
