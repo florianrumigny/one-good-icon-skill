@@ -1,0 +1,9 @@
+interface:
+  display_name: "One Good Icon"
+  short_description: "Explore, refine, and ship one strong app icon"
+  icon_small: "./assets/one-good-icon-mark-small.png"
+  icon_large: "./assets/one-good-icon-mark.png"
+  brand_color: "#EF5B4C"
+  default_prompt: "Use $one-good-icon to explore, refine, and ship an app icon from my real product material."
+policy:
+  allow_implicit_invocation: true
